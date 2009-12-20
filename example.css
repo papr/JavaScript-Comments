@@ -1,0 +1,151 @@
+/*
+	Comment System Layout: Pablo Prietz <http://prietz.org/>
+*/
+
+:focus {
+	outline: 0;
+}
+
+html {
+	font-size: 62.5%; /* reset 1em to 10px */
+	height: 100%;
+}
+
+body {
+	font: normal 1.2em Tahoma;
+	width: 800px;
+	margin: 0px auto;
+	border-right: 1px solid;
+	border-left: 1px solid;
+	height: 100%;
+}
+.post_body {
+    border-top: 1px solid;
+    margin-top: 5px;
+    padding: 0px 10px;
+}
+
+/* ----------------------------------------
+  Forms
+------------------------------------------- */
+
+.form {margin: 0; padding: 0;}
+
+/* Inputs */
+textarea {
+	padding: 3px;
+	width: 300px;
+	margin-left: 3px;
+}
+
+p.alert {
+	display: inline;
+	font-size: 0.9em;
+	color: #dd3135;
+	position: relative;
+	left: 40px;
+	visibility: hidden;
+}
+
+#item_comment {
+	max-width: 600px;
+	width: 450px;
+}
+#progress {
+	position: relative;
+	top: 3px;
+	left: 5px;
+}
+
+#form1 table {
+	border-spacing: 0px 3px;
+	border-collapse: separate;
+}
+
+#form1 table p {padding-left: 10px;}
+
+#form1 p {
+	display: inline;
+	width: 70px;
+	position: relative;
+}
+
+#postShortcut {
+	border-bottom: 1px solid;
+	padding: 5px;
+}
+
+.comment_body {
+	border-bottom: 1px solid;
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 5px;
+}
+
+
+.comment_body:last-of-type {
+	border-bottom: 0px solid #222;
+}
+
+.comment_body .comment_meta {
+	min-height: 50px;
+}
+
+.comment_body .name {
+	padding: 5px 5px 5px 5px;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	float: left;
+	height: 15px;
+}
+
+.comment_body .name p,
+.comment_body .name p a {
+	display: inline;
+	font-weight: bold;
+}
+
+#postShortcut a:link,
+#postShortcut a:visited,
+.comment_body .name p a:link,
+.comment_body .name p a:visited {
+	text-decoration: none !important;
+	border-bottom: 1px dotted !important;
+}
+
+#postShortcut a:focus,
+#postShortcut a:hover,
+#postShortcut a:active,
+.comment_body .name p a:focus,
+.comment_body .name p a:hover,
+.comment_body .name p a:active {
+	text-decoration: none !important;
+	border-bottom: 1px solid !important;
+}
+
+.comment_body .date {
+	font-size: 0.8em;
+	padding: 7px 5px 3px 5px;
+	border-bottom: 1px solid;
+	border-left: 1px solid;
+	height: 15px;
+	float: right;
+}
+
+.comment_body .gravatar {
+	float: left;
+	height: 50px;
+	width: 50px;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+}
+
+.comment_body .gravatar img {
+	height: inherit;
+	width: inherit;
+}
+
+.comment_body .text {
+	padding: 30px 10px 5px 60px;
+	margin: 0px;
+}

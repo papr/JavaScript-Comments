@@ -1,0 +1,188 @@
+
+/* reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+html {
+}
+
+a:link,
+a:visited {
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
+a:focus,
+a:hover,
+a:active {
+	text-decoration: none;
+	border-bottom: 1px solid;
+}
+
+
+/*---------------------------------------------------------------------- [MANAGEMENT] ------*/
+
+#management {
+	width: 800px;
+	margin: 0px auto;
+	padding: 10px;
+	margin-top: 50px;
+	position: relative;
+}
+
+#management .floats {
+	overflow: hidden;
+}
+
+img#progress {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+#logout {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font: 0.8em sans-serif;
+	width: 40px;
+}
+
+#management h1 {
+	font: bold 1.75em sans-serif;
+	padding: 5px 0px 0px 5px;
+}
+
+#management .item {
+	border: 1px solid black;
+	border-bottom: 0px solid black;
+	font: 0.8em sans-serif;
+}
+
+#management .item:hover {
+	background: #f7f5f3;
+}
+
+#management .item:first-of-type {
+    margin-top: 20px;
+}
+#management .item:last-of-type {
+    border-bottom: 1px solid black;
+}
+
+#management .item .utilities {
+	display: none;
+}
+
+#management .item:hover .utilities {
+	display: block;
+	float: right;
+	margin-left: 5px;
+}
+
+#management .item:hover .utilities .remove {
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	height: 23px;
+	width: 23px;
+	background: url(img/remove.png) no-repeat;
+}
+
+#management .item .date,
+#management .item .name {
+	float: left;
+	padding: 3px 5px;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+}
+
+#management .item .name p,
+#management .item .name p a {
+	display: inline;
+}
+
+#management .item .text {
+	padding: 5px 10px;
+}
+
+#management .item .id {visibility: hidden;display:none;}
+
+/*---------------------------------------------------------------------- [LOCK] ------*/
+
+#lock {
+	width: 300px;
+	height: 200px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -110px;
+	margin-left: -160px;
+	padding: 10px;
+	border: 1px solid;
+}
+
+#lock h1 {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding: 10px 0px 0px 10px;
+	font:2.3em sans-serif;
+	font-weight: bold;
+}
+
+#lock img.lockicon {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 50px;
+	width: 50px;
+	padding: 5px 10px 0px 0px;
+}
+
+#lock #inputWrapper {
+	padding: 65px 10px 0px 10px;
+}
+
+#lock #inputWrapper p.alert {
+	text-align: center;
+	color: #dd3135;
+	font: normal 0.75em Tahoma;
+	visibility: hidden;
+}
+
+#lock #inputWrapper button {
+	margin: 0px auto;
+	display: block;
+	margin-top: 5px;
+}
+
+#lock #inputWrapper table {
+	border-spacing: 5px 5px;
+	border-collapse: separate;
+	text-align: right;
+	margin: 0px auto;
+	font-family: Tahoma;
+}
+
+#lock #inputWrapper table p {
+	padding-top: 3px;
+}
+
+#lock #inputWrapper table input {
+	width: 160px;
+}

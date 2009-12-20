@@ -1,0 +1,276 @@
+<html>
+	<head>
+		<style type="text/css">
+			body {
+				padding-top: 20px;
+				font: 1em sans-serif;
+				padding: 0;
+				margin: 0;
+			}
+			a:link,
+			a:visited {
+				text-decoration: none;
+				color: black;
+			}
+			a:focus,
+			a:hover,
+			a:active {
+				outline: none;
+				border-bottom: 1px dotted black;
+			}
+			#leftcol {
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				width: 200px;
+				height: 100%;
+				overflow: auto;
+				border-right: 1px solid black;
+			}
+			#leftcol h3 {text-align: center;margin-top: 20px;}
+			#leftcol .contentTable {
+				list-style-type: none;
+				line-height: 0.75em;
+				padding-left: 30px;
+			}
+			#leftcol .contentTable ul {
+				list-style: none;
+				line-height: 1.25em;
+				padding-left: 20px;
+				margin-top: -10px;
+			}
+			#leftcol .contentTable li {/* padding-bottom: 0px; */}
+			#main {
+				margin: 10px 20px 0px 220px;
+			}
+			#header h1 {letter-spacing: 0.1em; text-align: center;font-family: Georgia, serif;font-size: 3em;}
+			#header p {text-align: center;font-family: Georgia, serif;font-size: 1.5em;margin-top: -40px;}
+			h2 {margin-bottom: -50px;margin-top: 50px;font-style: italic;}
+			p.text {display: inline;font-family: Georgia, serif;}
+			p.eg {
+				margin-left: 50px;
+				font-family: monospace;
+			}
+			i.default {font-size: 0.8em;}
+			.cmd {border-top: 1px solid black; margin-top: 50px;}
+			.cmd h4 {margin-left: 25px;}
+			.cmd .inner {margin-left: 50px;}
+			.cmd .inner .tabelH {font-weight: bold;margin: 25px 0px 5px 0px;}
+			.cmd .inner .text {font-size: 0.9em;}
+			.cmd .inner table {
+				border-spacing: 0px 1px;
+				border-collapse: collapse;
+			}
+			.cmd .inner table td {padding: 5px 10px;}
+			.cmd .inner table td:nth-child(1) {border-right: 1px solid black; text-align: right;}
+			.cmd .inner table td:nth-child(2) {border-right: 1px solid black; text-align: left;}
+			.cmd .inner table td:nth-child(3) {border-right: 0px solid black; text-align: center;}
+			.cmd .inner table td:nth-child(4) {border-left: 1px solid black;text-align: center;}
+			.cmd .inner table .key,
+			.cmd .inner table .value,
+			.cmd .inner table .auth,
+			.cmd .inner table .req{
+				border-bottom: 1px solid black;
+			}
+			.cmd .inner table .key{
+				width: 150px;
+				border-right: 1px solid black;
+			}
+			.cmd .inner table.simple td:nth-child(2) {border-right: 0px solid black;}
+			.list {list-style: none;}
+			.list .item {padding-bottom: 20px;}
+			.list .item .name {font-weight: bold; display: inline;}
+			.list .item .var {font-variant: small-caps;}
+			.list .item .text {margin: 5px 0px 0px 25px; display: block;}
+			#footer{
+				height: 20px;
+				border-top: 1px solid black;
+				margin-top: 30px;
+				text-align: center;
+				font-size: 0.8em;
+				padding: 5px 0px;
+			}
+						
+		</style>
+		<title>API Reference</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	</head>
+	<body>
+		<div id="leftcol">
+			<h3><a href="#main">Table of content</a></h3>
+			<ul class="contentTable">
+				<li><a href="#cmd_general">General</a></li>
+				<li>
+					<p><a href="#cmd_commands">Commands</a></p>
+					<ul>
+						<li><a href="#cmd_authenticate">Authentication</a></li>
+						<li><a href="#cmd_getComments">Get Comments</a></li>
+						<li><a href="#cmd_save">New Comment</a></li>
+						<li><a href="#cmd_removeComment">Remove Comment</a></li>
+					</ul>
+					<p><a href="#class_general">Object Classes</a></p>
+					<ul>
+						<li><a href="#class_comments">Comments</a></li>
+						<li><a href="#class_comment">Comment</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div id="main">
+			<div id="header">
+				<h1>API Reference</h1>
+				<p>of <i>JavaScript comments</i></p>
+			</div>
+			<h2 id="cmd_general">General</h2>
+			<div class="cmd">
+				<h3>How to use the API</h3>
+				<div class="inner">
+					<p class="text">To access the API you have to send a <i>get</i>-request with the accordingly required key/value <i>"action"</i>. In case authentication is necessary you have to send also the user credentials as <i>post</i>-request (in the same request). For more information read <a href="readme-license.txt"><i>readme-license.txt<i></a>.</p>
+				<p class="tabelH">Example:</p>
+					<p class="eg">http://example.com/api.php?key=value</p>
+				</div>
+				<h3>How to authenticate</h3>
+				<div class="inner">
+					<p class="text">These are the <i>post</i> parameters which you should send, when a command needs authetication. <b>You must not send the credentials in plaintext.</b> For a successful authentication take 5 times the <i>md5</i> hash of the username and the password and send these.</p>
+					<p class="tabelH">Example:</p>
+						<p class="eg"><pre>$pass = "Foobar";<br />for($i = 0; $i &lt; 5; ++$i) {<br />    $pass = md5($pass);<br />}</pre></p>
+					<p class="tabelH">Post Parameter</p>
+					<table class="simple">
+						<tr><td class="key"><i>Key</i></td><td class="value"><i>Value</i></td></tr>
+						<tr><td>adminUsername</td><td><i>username</i></td></tr>
+						<tr><td>adminPassword</td><td><i>password</i></td></tr>
+					</table>
+				</div>
+			</div>
+			<h2 id="cmd_commands">Commands</h2>
+			<div class="cmd" id="cmd_authenticate">
+				<h3>Authenticate</h3>
+				<div class="inner">
+					<p class="tabelH">Example:</p>
+						<p class="eg">http://example.com/api.php?action=auth</p>
+					<p class="tabelH">Get Parameter</p>
+					<table>
+						<tr>
+							<td class="key"><i>Key</i></td>
+							<td class="value"><i>Value</i></td>
+							<td class="req"><i>Required</i></td>
+							<td class="auth"><i>Needs Authentication</i></td>
+						</tr>
+						<tr><td>action</td><td>"auth"</td><td>✓</td><td>✓</td></tr>
+					</table>
+					<p class="tabelH">Response</p>
+					<p class="text">If credentials were right the response is <i>"All Right"</i>. If not it is <i>"Error: Unauthorized."</i>.</p>
+				</div>
+			</div>
+			<div class="cmd" id="cmd_getComments">
+				<h3>Get Comments</h3>
+				<div class="inner">
+					<p class="tabelH">Example:</p>
+						<p class="eg">http://example.com/api.php?action=getDB</p>
+					<p class="tabelH">Get Parameter</p>
+					<table>
+						<tr>						<td class="key"><i>Key</i></td>
+							<td class="value"><i>Value</i></td>
+							<td class="req"><i>Required</i></td>
+							<td class="auth"><i>Needs Authentication</i></td>
+						</tr>
+						<tr><td>action</td><td>"getDB"</td><td>✓</td><td>ᐨᐨ</td></tr>
+						<tr><td>showMails</td><td>"TRUE"</td><td>ᐨᐨ</td><td>✓</td></tr>
+					</table>
+					<p class="tabelH">Response</p>
+					<p class="text">By default this will return all comments as a JSON array but with all mail adresses <i>md5</i>-hashed and all IP addresses <i>md5</i>-hashed twice.<br />If <i>showMails</i> is set to <i>TRUE</i> mail and IP addresses will send clearly.</p>
+				</div>
+			</div>
+			<div class="cmd" id="cmd_save">
+				<h3>Save A New Comment</h3>
+				<div class="inner">
+					<p class="tabelH">Example:</p>
+						<p class="eg">http://example.com/api.php?action=save&id=E73BF175-F920-447D-993D-CE4169F17BCD</p>
+					<p class="tabelH">Get Parameter</p>
+					<table>
+						<tr>
+							<td class="key"><i>Key</i></td>
+							<td class="value"><i>Value</i></td>
+							<td class="req"><i>Required</i></td>
+							<td class="auth"><i>Needs Authentication</i></td>
+						</tr>
+						<tr><td>action</td><td>"save"</td><td>✓</td><td>ᐨᐨ</td></tr>
+					</table>
+					<p class="tabelH">Post Parameter</p>
+					<table>
+						<tr>
+							<td class="key"><i>Key</i></td>
+							<td class="value"><i>Value</i></td>
+							<td class="req"><i>Required</i></td>
+							<td class="auth"><i>Needs Authentication</i></td>
+						</tr>
+						<tr><td>id</td><td>"E73BF175-F920-447D-993D-CE4169F17BCD"<br /><i class="default">(by default)</i></td><td>✓ <i class="default">(by default)</i></td><td>ᐨᐨ</td></tr>
+						<tr><td>commentatorName</td><td><i>commentator's name</i></td><td>✓</td><td>ᐨᐨ</td></tr>
+						<tr><td>commentatorEmail</td><td><i>commentator's email</i></td><td>✓</td><td>ᐨᐨ</td></tr>
+						<tr><td>commentatorText</td><td><i>commentator's comment</i></td><td>✓</td><td>ᐨᐨ</td></tr>
+						<tr><td>commentatorWebsite</td><td><i>commentator's website</i></td><td>ᐨᐨ</td><td>ᐨᐨ</td></tr>
+					</table>
+					<p class="tabelH">Further Information</p>
+					<p class="text">The <i>id</i> is the value of the hidden <i>input tag</i> (look at example.html#tmpID) which should be something random like an uuid.<br />Except for the <i>id</i>, the required values should be checked with JavaScript because they are not checked by the API.</p>
+					<p class="tabelH">Response</p>
+					<p class="text">If the <i>id</i> is missing the API will return <i>"Error: Unauthorized."</i>. If the comment could be saved the API returns the comment's JSON value. If there was an error saving the comment the API will return <i>"Error: Comment could not be saved."</i>.</p>
+				</div>
+			</div>
+			<div class="cmd" id="cmd_removeComment">
+				<h3>Remove Comment</h3>
+				<div class="inner">
+					<p class="tabelH">Example:</p>
+						<p class="eg">http://example.com/api.php?action=remove&id=4b28fa38834c5c</p>
+					<p class="tabelH">Get Parameter</p>
+					<table>
+						<tr>
+							<td class="key"><i>Key</i></td>
+							<td class="value"><i>Value</i></td>
+							<td class="req"><i>Required</i></td>
+							<td class="auth"><i>Needs Authentication</i></td>
+						</tr>
+						<tr><td>action</td><td>"remove"</td><td>✓</td><td>✓</td></tr>
+						<tr><td>id</td><td><i>comment's id<br /><i class="default">(without "id_")</i></i></td><td>✓</td><td>✓</td></tr>
+					</table>
+					<p class="tabelH">Response</p>
+					<p class="text">If <i>id</i> is empty or not sent it will be returned <i>"Error: No ID sent or it is empty.". </i>If the comment's deletion was successful it will be returned the deleted comment's id.</p>
+				</div>
+			</div>
+			<h2 id="class_general">Object Classes</h2>
+			<div class="cmd" id="class_comments">
+				<h3>Comments</h3>
+				<div class="inner">
+					<p class="tabelH">Instance Variables</p>
+						<ul class="list">
+							<li class="item"><p class="name">$items</p><p class="text">Array with all comments</p></li>
+						</ul>
+					<p class="tabelH">Methods</p>
+						<ul class="list">
+							<li class="item"><p class="name">addComment(<span class="var">comment</span>)</p><p class="text">Adds <span class="var"><b>comment</b></span> (an instance of the <a href="#class_comment">Comment</a> object) to <b>$items</b>.<br />Returns nothing (void).</p></li>
+							<li class="item"><p class="name">allComments(<span class="var">databasefilename</span>)</p><p class="text">Opens <span class="var"><b>databasefilename</b></span>, reads the JSON content (should be an array) and assigns it to <b>$items</b>.<br />Returns nothing (void).</p></li>
+						</ul>
+				</div>
+			</div>
+			<div class="cmd" id="class_comment">
+				<h3>Comment</h3>
+				<div class="inner">
+					<p class="tabelH">Instance Variables</p>
+						<ul class="list">
+							<li class="item"><p class="name">$name</p><p class="text">The commentator's name. (String)</p></li>
+							<li class="item"><p class="name">$email</p><p class="text">The commentator's email. (String)</p></li>
+							<li class="item"><p class="name">$text</p><p class="text">The comment itself. (String)</p></li>
+							<li class="item"><p class="name">$creationDate</p><p class="text">The creation date is an unix timestamp<br />in milliseconds. (Number)</p></li>
+							<li class="item"><p class="name">$url</p><p class="text">The commentator's website. (String)</p></li>
+							<li class="item"><p class="name">$id</p><p class="text">The comment's (unique) id. (String)</p></li>
+							<li class="item"><p class="name">$IP</p><p class="text">The commentator's IP. (String)</p></li>
+						</ul>
+					<p class="tabelH">Methods</p>
+						<ul class="list">
+							<li class="item"><p class="name">createComment(<span class="var">name, email, text, url, ip</span>)</p><p class="text">Assigns the passed value (<span class="var"><b>name, email, text, url, ip</b></span>) to the object (an instance of the <a href="#class_comment">Comment</a> object).<br />Returns nothing (void).</p></li>
+						</ul>
+				</div>
+			</div>
+			<div id="footer">Documentation by <a href="http://prietz.org/">prietz.org</a>.</div>
+		</div>
+	</body>
+</html>

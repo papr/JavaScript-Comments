@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+	<title>Example comments</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="example.css" media="screen" />
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/json_parse.js"></script>
+	<script type="text/javascript" src="js/example.js"></script>
+</head>
+<body>
+          <div class="post_top">
+            <div id="postShortcut">If you want to write a comment <a href="#post_creation">click here</a>.</div>
+            <div id="commentWrapper"><!-- The comments are going to be inserted here with JavaScript --></div>
+            <div class="post_body" id="post_creation">
+                <div class="form" id="form1">
+                    <table>
+                        <tr>
+                            <td><input 	type="text"
+                                        id="item_name"
+                                        name="commentatorName" /></td>
+                            <td><p>Name (required)</p></td>
+                        </tr>
+                        <tr>
+                            <td><input 	type="text"
+                                        id="item_email"
+                                        name="commentatorEmail" /></td>
+                            <td><p>E-Mail (required) (not shown in comments)</p></td>
+                        </tr>
+                        <tr>
+                            <td><input 	type="text"
+                                        id="item_site"
+                                        name="commentatorWebsite" /></td>
+                            <td><p>Website (shown in comments)</p></td>
+                        </tr>
+                    </table>
+                    <textarea name="commentatorText" id="item_comment"></textarea>
+                    <input type="hidden" name="action" value="save">
+                    <input type="hidden" name="id" value="E73BF175-F920-447D-993D-CE4169F17BCD" id="tempID" />
+                    <br />
+                </div>
+                <input name="Send" type="submit" value="Send" id="item_send" />
+                <img alt="progress" src="img/progress.gif" id="progress" />
+                <p class="alert">The red marked fields are required but are empty or not right filled out.</p>
+              </div>
+</body>
+</html>

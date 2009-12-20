@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+	<title>Admin Login</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="reset.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="admin.css" media="screen" />
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/md5-min.js"></script>
+	<script type="text/javascript" src="js/json_parse.js"></script>
+	<script type="text/javascript" src="js/admin.js"></script>
+</head>
+<body onload="init();" onunload="logout();">
+	<div id="wrapper">
+		<div id="lock">
+            <h1>Admin Login</h1>
+            <img alt="lock" src="img/lock.png" class="lockicon" />
+            <div id="inputWrapper">
+                <p class="alert">The user name or password is incorrect.</p>
+                <table>
+                    <tr>
+                        <td><p>Username:</p></td>
+                        <td><input 	type="text"
+                                    id="lockUserName"
+                                    name="lockUserName"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p>Password:</p></td>
+                        <td><input 	type="password"
+                                    id="lockPassword"
+                                    name="lockPassword"/>
+                        </td>
+                    </tr>
+                </table>
+                <button type="button" onclick="login();">Login</button>
+            </div>
+            <img alt="progress" src="img/progress.gif" id="progress" />
+		</div>
+	</div>
+</body>
+</html>
